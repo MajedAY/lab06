@@ -1,0 +1,17 @@
+<h1>Student Details: {{ student.name }}</h1>
+
+<h2>Courses Enrolled</h2>
+<ul>
+  {% for course in student.courses.all %}
+    <li>{{ course.name }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Register for New Course</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ course_form.as_p }}  <button type="submit">Register</button>
+</form>
+
+<a href="{% url 'add_student' %}">Students</a>
+<a href="{% url 'add_course' %}">Courses</a>
